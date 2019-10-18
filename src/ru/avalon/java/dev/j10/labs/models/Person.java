@@ -14,8 +14,8 @@ import ru.avalon.java.dev.j10.labs.commons.Address;
  */
 public class Person {
     private String   name;
-    private String   patronymic;
-    private String   secondName;
+    private String   patronymic;  // отчество
+    private String   secondName;  // второе мия
     private String   surname;
     private String   birthday;
     private Passport passport;
@@ -29,16 +29,14 @@ public class Person {
         this(surname, name);
         this.patronymic = patronymic;
     }
-//    public Person(String name, String secondName, String surname){
-//       this.name = name;
-//       this.secondName = secondName;
-//        this.surname = surname;
-//    }
+    public Person(String surname, String name, String patronymic, String secondName){
+        this(surname, name, patronymic);
+        this.secondName = secondName;
+    }
     public Person(String surname, String name, String patronymic, Address residenceAddress){
         this(surname, name, patronymic);
         this.residenceAddress = residenceAddress;
     }
-
 
 //    public Person(String surname, String name,  String birthday){
 //        this.name = name;
@@ -55,7 +53,7 @@ public class Person {
 //    }
 
     public String getName() {
-        return name;
+        return name + " ";
     }
 
     public void setName(String name) {
@@ -63,7 +61,7 @@ public class Person {
     }
 
     public String getSurname() {
-        return surname;
+        return surname + " ";
     }
 
     public void setSurname(String surname) {
@@ -71,7 +69,7 @@ public class Person {
     }
 
     public String getPatronymic() {
-        return patronymic;
+        return patronymic + " ";
     }
 
     public void setPatronymic(String patronymic) {
@@ -79,7 +77,7 @@ public class Person {
     }
 
     public String getSecondName() {
-        return secondName;
+        return secondName + " ";
     }
 
     public void setSecondName(String secondName) {
@@ -123,8 +121,19 @@ public class Person {
         /*
          * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
          */
-        return "Residence: " + residenceAddress.toString() + "\n" +
-               "Registration: " + passport.getRegistrationAddress().toString() + "\n";
+        if (residenceAddress != null && passport != null) {
+             return "Residence: " + residenceAddress.toString() + "\n" +
+                    "Registration: " + passport.getRegistrationAddress().toString() + "\n";
+        }
+        if (residenceAddress != null){
+             return "Residence: " + residenceAddress.toString() +
+                    "\nRegistration: Address not set!";
+        }
+        if (passport != null){
+             return "Registration: " + passport.getRegistrationAddress().toString() +
+                    "\nResidence: Address not set!";
+        }
+        return "ERROR: Address not set!";
     }
 
     /**
@@ -147,8 +156,11 @@ public class Person {
 
     public String getFullName() {
 
-        if(secondName != null) {
+        if (secondName != null) {
             return  (name + " " + secondName.charAt(0) + ". " + surname);
+        }
+        if (patronymic == null) {
+            return surname + " " + name;
         }
 
         return surname + " " + name + " " + patronymic;

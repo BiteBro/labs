@@ -19,8 +19,8 @@ package ru.avalon.java.dev.j10.labs.commons;
  */
 
 public class Address {
-    private String postcode = null;
-    private String personAddress = null;
+    private String postcode;
+    private String personAddress;
 
     public Address(String address, String postcode) {
         this.postcode = postcode;
@@ -31,7 +31,7 @@ public class Address {
        if(postcode == null && personAddress == null) {
            return "Postcode and Address have not be set!";
        }
-        return "Postcode: " + postcode + "\nAddress: " + personAddress + "\n";
+        return "Postcode: " + postcode + "  Address: " + personAddress;
     }
 
     public String getPersonAddress() {

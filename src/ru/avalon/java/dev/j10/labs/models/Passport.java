@@ -2,8 +2,6 @@ package ru.avalon.java.dev.j10.labs.models;
 
 import ru.avalon.java.dev.j10.labs.commons.Address;
 
-import java.util.regex.PatternSyntaxException;
-
 /**
  * Представление о паспортных данных человека.
  * <p>
@@ -19,14 +17,17 @@ import java.util.regex.PatternSyntaxException;
  *  <li> орган, выдавший документ.
  * </ol>
  */
+
+// Фамилия, Имя, Отчество, день рождения, были перенесены в класс Person
 public class Passport {
     private Person person;
     private Address registrationAddress;
-
     private String seriesAndDocNumber;
 //    private String name;
 //    private String surname;
+//    private String patronymic;
 //    private String secondName;
+//    private String   birthday;
     private String dateOfIssue;
     private String organization;
 
@@ -39,8 +40,8 @@ public class Passport {
     public Passport(Person person, String seriesAndDocNumber, String dateOfIssue, String organization){
         this(seriesAndDocNumber, dateOfIssue, organization);
         this.person = person;
-
     }
+
     public Passport(Person person, Address registrationAddress, String seriesAndDocNumber, String dateOfIssue, String organization){
         this(person, seriesAndDocNumber, dateOfIssue, organization);
         this.registrationAddress = registrationAddress;
@@ -93,30 +94,6 @@ public class Passport {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-
-//    public String getSecondName() {
-//        return secondName;
-//    }
-//
-//    public void setSecondName(String secondName) {
-//        this.secondName = secondName;
-//    }
-
-//    public Date getBirthday() {
-//        return person.getBirthday();
-//    }
-//
-//    public void setBirthday(Date birthday) {
-//        person.setBirthday(birthday);
-//    }
-
-//    public Date getDateOfIssue() {
-//        return dateOfIssue;
-//    }
-//
-//    public void setDateOfIssue(Date dateOfIssue) {
-//        this.dateOfIssue = dateOfIssue;
-//    }
 
     /*
      * TODO(Студент): Закончить определение класса.
