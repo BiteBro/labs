@@ -1,5 +1,6 @@
 package ru.avalon.java.dev.j10.labs.models;
 
+import ru.avalon.java.dev.j10.labs.commons.Address;
 /**
  * Представление о человеке.
  * <p>
@@ -12,22 +13,119 @@ package ru.avalon.java.dev.j10.labs.models;
  * </ol>
  */
 public class Person {
+    private String   name;
+    private String   patronymic;
+    private String   secondName;
+    private String   surname;
+    private String   birthday;
+    private Passport passport;
+    private Address  residenceAddress;
 
-    /*
-     * TODO(Студент): Создайте класс Address.
+    public Person(String surname, String name){
+        this.name = name;
+        this.surname = surname;
+    }
+    public Person(String surname, String name, String patronymic){
+        this(surname, name);
+        this.patronymic = patronymic;
+    }
+//    public Person(String name, String secondName, String surname){
+//       this.name = name;
+//       this.secondName = secondName;
+//        this.surname = surname;
+//    }
+    public Person(String surname, String name, String patronymic, Address residenceAddress){
+        this(surname, name, patronymic);
+        this.residenceAddress = residenceAddress;
+    }
+
+
+//    public Person(String surname, String name,  String birthday){
+//        this.name = name;
+//        this.birthday = birthday;
+//        this.surname = surname;
+//    }
+//    public Person(String surname, String name, String secondName, String birthday){
+//        this(surname, name, birthday);
+//        this.secondName = secondName;
+//    }
+//    public Person(String surname, String name, String secondName, String birthday, Address residenceAddress){
+//        this(surname, name, birthday, secondName);
+//        this.residenceAddress = residenceAddress;
+//    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
+    public void setResidenceAddress(Address residenceAddress) {
+        this.residenceAddress = residenceAddress;
+    }
+
+    public Address getResidenceAddress() {
+        return residenceAddress;
+    }
+
+    /**
+     * Возвращает адрес, по которому проживает человек.
+     * <p>
+     * Возвращаемый адрес соответствует месту постоянной
+     * регистрации человека, согласно паспортным данным.
      *
-     * 1. Добавте файл в пакет ru.avalon.java.dev.j10.labs.commons.
-     *
-     * 2. Создайте класс, видимый из пакета. Подумайте о том
-     *    Какое имя должен иметь класс, если он объявленн в этом
-     *    файле.
-     *
-     * 3. Подумайте над тем, какие переменные должены быть
-     *    определены в классе.
-     *
-     * 4. Подумайте над тем, какие методы должны быть объявлены
-     *    в классе.
+     * @return адрес регистрации в виде строки.
      */
+
+    public String getAddress() {
+        /*
+         * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
+         */
+        return "Residence: " + residenceAddress.toString() + "\n" +
+               "Registration: " + passport.getRegistrationAddress().toString() + "\n";
+    }
 
     /**
      * Возврвщает полное имя человека.
@@ -46,25 +144,16 @@ public class Person {
      *
      * @return имя человека в виде строки.
      */
+
     public String getFullName() {
+
+        if(secondName != null) {
+            return  (name + " " + secondName.charAt(0) + ". " + surname);
+        }
+
+        return surname + " " + name + " " + patronymic;
         /*
          * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
          */
-        return null;
-    }
-
-    /**
-     * Возвращает адрес, по которому проживает человек.
-     * <p>
-     * Возвращаемый адрес соответствует месту постоянной
-     * регистрации человека, согласно паспортным данным.
-     *
-     * @return адрес регистрации в виде строки.
-     */
-    public String getAddress() {
-        /*
-         * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
-         */
-        return null;
     }
 }

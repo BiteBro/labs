@@ -4,7 +4,7 @@ import ru.avalon.java.dev.j10.labs.models.Person;
 
 public class Main {
 
-    Main() {
+    public static void main(String[] args) {
 
         /*
          * FIXME(Студент): Измените определение метода так, чтобы он стал точкой входа в приложение.
@@ -12,6 +12,7 @@ public class Main {
 
         Person ivanov = null;
         Person smith = null;
+       //Person smith2 = new Person();
 
         /*
          * TODO(Студент): Создайте экземпляры класса 'Person'
@@ -24,7 +25,12 @@ public class Main {
          *    чтобы она адресовала объект типа 'Person'
          *    описывающий человека по имени 'John Edvard Smith'.
          */
+        ivanov = new Person("Иванов", "Иван", "Иванович");
+        smith = new Person("Smith", "John");
+        smith.setSecondName("Edvard");
 
+        System.out.println(smith.getFullName());
+        System.out.println(ivanov.getFullName());
         /*
          * TODO(Студент): Создайте несколько строковых переменных:
          *

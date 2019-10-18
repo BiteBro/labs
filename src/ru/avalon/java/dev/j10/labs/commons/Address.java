@@ -1,5 +1,9 @@
+package ru.avalon.java.dev.j10.labs.commons;
+
 /*
  * TODO(Студент): Создайте класс Address.
+ *
+ *
  *
  * 1. Добавте файл в пакет ru.avalon.java.dev.j10.labs.commons.
  *
@@ -13,3 +17,36 @@
  * 4. Подумайте над тем, какие методы должны быть объявлены
  *    в классе.
  */
+
+public class Address {
+    private String postcode = null;
+    private String personAddress = null;
+
+    public Address(String address, String postcode) {
+        this.postcode = postcode;
+        this.personAddress = address;
+    }
+
+    public String toString() {
+       if(postcode == null && personAddress == null) {
+           return "Postcode and Address have not be set!";
+       }
+        return "Postcode: " + postcode + "\nAddress: " + personAddress + "\n";
+    }
+
+    public String getPersonAddress() {
+        return personAddress;
+    }
+
+    public void setPersonAddress(String personAddress) {
+        this.personAddress = personAddress;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+}
